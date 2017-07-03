@@ -1,2 +1,10 @@
-.main h3 {
+.main {
   text-align: center; }
+  .main .main-list-items ul {
+    list-style-type: none;
+    padding: 0; }
+  .main .main-list-items li.item {
+    width: 50%;
+    margin: 0 auto;
+    border-bottom: 2px solid;
+    margin-bottom: 5px; }

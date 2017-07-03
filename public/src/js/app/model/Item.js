@@ -11,6 +11,7 @@ var Item = (function($){
 
 	Item.prototype.create = function(){
 		this.el.text(this.description);
+		this.el.addClass('item')
 
 		return this.el;
 	}

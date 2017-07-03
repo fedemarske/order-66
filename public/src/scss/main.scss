@@ -1,6 +1,19 @@
 .main{
 
-	h3 {
-		text-align: center;
+	text-align: center;
+
+	.main-list-items{
+
+		ul{
+		    list-style-type: none;
+    		padding: 0;
+		}
+
+		li.item{
+		    width: 50%;
+    		margin: 0 auto;
+	    	border-bottom: 2px solid;
+    		margin-bottom: 5px;
+		}
 	}
 }
