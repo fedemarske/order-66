@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Item List</title>
+
+	<link rel="stylesheet" type="text/css" href="dist/css/normalize.css">
+</head>
+<body>
+
+	<div class="main">
+		
+		<h3>Items List</h3>
+
+		<div class="list-items">
+
+			<div class="top-list-items">
+				<span>Counter: <strong id="counter"></strong></span>
+				<button onclick="addItem()">Add Item</button>
+			</div>
+
+			<div class="main-list-items" id="main-list">
+				
+			</div>
+			
+		</div>
+
+		<div class="modal-add-item">
+			
+		</div>
+
+	</div>
+
+	<script src='dist/js/vendor/jquery-3.2.1.min.js'></script>
+	<script src='src/js/app/model/Item.js'></script>
+	<script src='src/js/app/model/List.js'></script>
+	<script src='src/js/app/Init.js'></script>
+
+	<script>
+		$(document).ready(function(){
+			appInit.init()
+		})
+	</script>
+
+</body>
+</html>
