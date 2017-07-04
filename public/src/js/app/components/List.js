@@ -9,17 +9,13 @@ var List = (function($, Item){
 
 	List.prototype.getItems = function(){
 		return [{
-			description: 'sarasa 1',
-			img: 'test 1'
+			description: 'sarasa 1'
 		},{
-			description: 'sarasa 2',
-			img: 'test 2'
+			description: 'sarasa 2'
 		},{
-			description: 'sarasa 3',
-			img: 'test 3'
+			description: 'sarasa 3'
 		},{
-			description: 'sarasa 4',
-			img: 'test 4'
+			description: 'sarasa 4'
 		}]
 	}
 

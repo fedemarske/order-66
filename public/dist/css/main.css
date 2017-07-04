@@ -57,6 +57,9 @@ body.dragging, body.dragging * {
         border: 5px solid transparent;
         border-left-color: white;
         border-right: none; }
+    .main ul.main-list-items img.list-img {
+      margin-right: 30px;
+      vertical-align: top; }
   .main .modal {
     display: none;
     position: fixed;
