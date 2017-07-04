@@ -1,19 +1,124 @@
+$primaty-color: cornflowerblue;
+
+html {
+	background: $primaty-color;
+    color: white;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
 .main{
 
 	text-align: center;
 
-	.main-list-items{
+	button {
+	    color: #337ab7;
+    	background-color: #fff;
+    	border-color: #fff;
+    	display: inline-block;
+	    padding: 6px 12px;
+	    margin-bottom: 0;
+	    font-size: 14px;
+	    font-weight: 400;
+	    line-height: 1.42857143;
+	    text-align: center;
+	    white-space: nowrap;
+	    vertical-align: middle;
+	    cursor: pointer;
+	    user-select: none;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    border-radius: 4px;
+	}
 
-		ul{
-		    list-style-type: none;
-    		padding: 0;
-		}
+	textarea {
+		width: 400px;
+		height: 200px;
+		resize: none;
+		margin-bottom: 60px;
+	}
+
+	ul.main-list-items{
+	    list-style-type: none;
+		padding: 0;
 
 		li.item{
 		    width: 50%;
     		margin: 0 auto;
-	    	border-bottom: 2px solid;
+	    	border: 2px solid;
     		margin-bottom: 5px;
+    		font-size: 25px;
+    		padding: 10px;
+    		text-align: left;
+		}
+
+		ul li.placeholder {
+		  	position: relative;
+		    width: 50%;
+		    margin: 0 auto;
+		    padding: 10px;
+
+		    &:before {
+			  	position: absolute;
+			    content: "";
+			    width: 0;
+			    height: 0;
+			    margin-top: -5px;
+			    left: -5px;
+			    top: -4px;
+			    border: 5px solid transparent;
+			    border-left-color: white;
+			    border-right: none;
+		    }
+		}
+	}
+
+	.modal{
+		display: none;
+	    position: fixed;
+	    z-index: 1;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    overflow: auto;
+	    background-color: rgb(0,0,0);
+	    background-color: rgba(0,0,0,0.4);
+
+		.modal-content {
+		   	background: $primaty-color;
+		    color: white;
+		    margin: 5% auto;
+		    padding: 20px;
+		    border: 1px solid white;
+		    width: 80%;
+		}
+
+		.input-group {
+
+			display: inline-block;
+			position: relative;
+
+			a {
+			    position:absolute;
+			    bottom:10px;
+			    right:6px;
+			    background: $primaty-color;
+			    padding: 10px;
+			    border: 1px solid white;
+			    color:#FFF;
+			    cursor: pointer;
+			}
 		}
 	}
 }
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+

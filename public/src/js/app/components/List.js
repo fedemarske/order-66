@@ -4,7 +4,7 @@ var List = (function($, Item){
 
 	function List(){
 		this.items = this.getItems();
-		this.el = $('<ul>');
+		this.el = $('<ul>').addClass('main-list-items');
 	}
 
 	List.prototype.getItems = function(){
@@ -31,6 +31,10 @@ var List = (function($, Item){
 		}.bind(this))
 
 		return this.el;
+	}
+
+	List.prototype.getCounter = function(){
+		return this.items.length;
 	}
 
 	return List;
