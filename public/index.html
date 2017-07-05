@@ -3,6 +3,8 @@
 <head>
 	<title>Item List</title>
 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
 	<link rel="stylesheet" type="text/css" href="dist/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="dist/css/main.css">
 </head>
@@ -16,7 +18,7 @@
 
 			<div class="top-list-items">
 				<span>Total items: <strong id="counter"></strong></span>
-				<button id="add-item-btn" ">Add Item</button>
+				<button id="add-item-btn">Add Item</button>
 			</div>
 
 			<div id="main-list"></div>
@@ -24,26 +26,25 @@
 		</div>
 
 		<div class="modal" id="add-item-modal">
-
-		  <!-- Modal content -->
 		  <div class="modal-content">
-		  	<form>
+		  	<form name="">
 		  		<div class="modal-header">
 		  			<h2>Add Item</h2>
 		  		</div>
 		  		<div class="form-group">
 		  			<div class="input-group">
-		  				<img src="http://via.placeholder.com/320x320" />
-		  				<a>Upload</a>
+		  				<img src="http://via.placeholder.com/320x320" id="img-tag-item"/>
+		  				<input type='file' name='img-input-item' id="img-input-item" />
+		  				<a id="img-anchor-item">Upload</a>
 		  			</div>
 		  			<div class="input-group">
 		  				<p>Description:</p>
-			  			<textarea></textarea>
+			  			<textarea name="desc-item" id="desc-item"></textarea>
 		  			</div>
 		  		</div>
 		  		<div class="modal-footer">
-		  			<button>Submit</button>
-		  			<button>Cancel</button>
+		  			<button id="btn-submit-modal">Submit</button>
+		  			<button id="btn-cancel-modal">Cancel</button>
 		  		</div>
 		  	</form>
 		  </div>
@@ -54,13 +55,15 @@
 
 	<script src='dist/js/vendor/jquery-3.2.1.min.js'></script>
 	<script src='dist/js/vendor/jquery-sortable.js'></script>
+	<script src='dist/js/vendor/lockr.js'></script>
+	<script src='src/js/app/components/Modal.js'></script>
 	<script src='src/js/app/components/Item.js'></script>
 	<script src='src/js/app/components/List.js'></script>
 	<script src='src/js/app/Init.js'></script>
 
 	<script>
 		$(document).ready(function(){
-			appInit.init()
+			app.init()
 		})
 	</script>
 

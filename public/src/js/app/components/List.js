@@ -1,4 +1,4 @@
-var List = (function($, Item){
+var List = (function($, Lockr, Item){
 
 	'use strict';
 
@@ -33,6 +33,10 @@ var List = (function($, Item){
 		return this.items.length;
 	}
 
+	List.prototype.addItem = function(img, desc){
+
+	}
+
 	return List;
 
-})(jQuery, Item);
+})(jQuery, Lockr, Item);

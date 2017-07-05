@@ -1,8 +1,10 @@
 $primaty-color: cornflowerblue;
+$secondary-color: white;
 
 html {
 	background: $primaty-color;
-    color: white;
+    color: $secondary-color;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body.dragging, body.dragging * {
@@ -15,8 +17,8 @@ body.dragging, body.dragging * {
 
 	button {
 	    color: #337ab7;
-    	background-color: #fff;
-    	border-color: #fff;
+    	background-color: $secondary-color;
+    	border-color: $secondary-color;
     	display: inline-block;
 	    padding: 6px 12px;
 	    margin-bottom: 0;
@@ -54,7 +56,7 @@ body.dragging, body.dragging * {
     		text-align: left;
 		}
 
-		ul li.placeholder {
+		li.placeholder {
 		  	position: relative;
 		    width: 50%;
 		    margin: 0 auto;
@@ -69,14 +71,22 @@ body.dragging, body.dragging * {
 			    left: -5px;
 			    top: -4px;
 			    border: 5px solid transparent;
-			    border-left-color: white;
+			    border-left-color: $secondary-color;
 			    border-right: none;
 		    }
 		}
 
 		img.list-img {
-		    margin-right: 30px;
+		    margin-right: 20px;
     		vertical-align: top;
+		}
+
+		div.btn-group {
+			margin-top: 10px;
+
+			&> button {
+				margin-right: 10px;
+			}
 		}
 	}
 
@@ -97,7 +107,7 @@ body.dragging, body.dragging * {
 		    color: white;
 		    margin: 5% auto;
 		    padding: 20px;
-		    border: 1px solid white;
+		    border: 1px solid $secondary-color;
 		    width: 80%;
 		}
 
@@ -112,9 +122,13 @@ body.dragging, body.dragging * {
 			    right:6px;
 			    background: $primaty-color;
 			    padding: 10px;
-			    border: 1px solid white;
+			    border: 1px solid $secondary-color;
 			    color:#FFF;
 			    cursor: pointer;
+			}
+
+			input#img-input-item {
+				display: none;
 			}
 		}
 	}

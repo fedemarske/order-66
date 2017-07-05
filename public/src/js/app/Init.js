@@ -1,8 +1,11 @@
-var appInit = (function($){
+var app = (function($){
+
+	var list;
 
 	var init = function(){
-		var list = new List(),
-			modal = $('#add-item-modal');
+		Modal.init();
+
+		list = new List();
 
 		$('#main-list').append(list.create());
 
@@ -11,14 +14,13 @@ var appInit = (function($){
 		$('#counter').text(list.getCounter());
 
 		$('#add-item-btn').click(function(){
-			modal.show();
+			Modal.open(false);
 		})
 
-		window.onclick = function(event) {
-		    if (event.target == modal[0]) {
-		        modal.hide();
-		    }
-		}
+	}
+
+	var getList = function(){
+		return list;
 	}
 
 	return {

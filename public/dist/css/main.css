@@ -1,6 +1,7 @@
 html {
   background: cornflowerblue;
-  color: white; }
+  color: white;
+  font-family: 'Open Sans', sans-serif; }
 
 body.dragging, body.dragging * {
   cursor: move !important; }
@@ -9,8 +10,8 @@ body.dragging, body.dragging * {
   text-align: center; }
   .main button {
     color: #337ab7;
-    background-color: #fff;
-    border-color: #fff;
+    background-color: white;
+    border-color: white;
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -41,12 +42,12 @@ body.dragging, body.dragging * {
       font-size: 25px;
       padding: 10px;
       text-align: left; }
-    .main ul.main-list-items ul li.placeholder {
+    .main ul.main-list-items li.placeholder {
       position: relative;
       width: 50%;
       margin: 0 auto;
       padding: 10px; }
-      .main ul.main-list-items ul li.placeholder:before {
+      .main ul.main-list-items li.placeholder:before {
         position: absolute;
         content: "";
         width: 0;
@@ -58,8 +59,12 @@ body.dragging, body.dragging * {
         border-left-color: white;
         border-right: none; }
     .main ul.main-list-items img.list-img {
-      margin-right: 30px;
+      margin-right: 20px;
       vertical-align: top; }
+    .main ul.main-list-items div.btn-group {
+      margin-top: 10px; }
+      .main ul.main-list-items div.btn-group > button {
+        margin-right: 10px; }
   .main .modal {
     display: none;
     position: fixed;
@@ -90,6 +95,8 @@ body.dragging, body.dragging * {
         border: 1px solid white;
         color: #FFF;
         cursor: pointer; }
+      .main .modal .input-group input#img-input-item {
+        display: none; }
 
 .dragged {
   position: absolute;
