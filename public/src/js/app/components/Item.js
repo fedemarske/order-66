@@ -1,10 +1,13 @@
-var Item = (function($, Modal){
+(function($, App, Lockr){
 
 	'use strict';
 
-	function Item(options){
+	function Item(options, listIns){
+		console.log(options)
 		this.description = options.description;
-		this.imgSrc = options.img || 'http://via.placeholder.com/320x320';
+		this.imgSrc = options.img.indexOf('data:image/png;base64,') !== -1 ? options.img : 'data:image/png;base64,' + options.img;
+		this.uid = options.uid || '';
+		this.list = listIns;
 		this.createDom();
 	}
 
@@ -19,6 +22,7 @@ var Item = (function($, Modal){
 
 	Item.prototype.createDom = function(){
 		this.el = $('<li>');
+		this.el.data(this)
 		this.img = $('<img>').addClass('list-img').attr({
 			'src': this.imgSrc,
 			'width': '130px',
@@ -31,16 +35,22 @@ var Item = (function($, Modal){
 	}
 
 	Item.prototype.editHandler = function() {
-		Modal.open(true, {
+		App.Modal.open(true, {
 			description: this.description,
 			imgSrc: this.imgSrc
 		});
 	}
 
 	Item.prototype.deleteHandler = function() {
+		var items = this.list.items,
+			itemToDelete = items.map(function(e) { return e.uid; }).indexOf(this.uid);
 
+		items.splice(itemToDelete, 1);
+		Lockr.rm('items-list');
+		Lockr.set('items-list', items);
+		this.list.reRender();
 	}
 
-	return Item;
+	App.Item = Item;
 
-})(jQuery, Modal);
+})(jQuery, App, Lockr);

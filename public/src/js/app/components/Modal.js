@@ -1,18 +1,22 @@
-var Modal = (function($){
+(function($, App){
 
 	var el,
 		inputImg,
 		tagImg,
-		textDesc;
+		textDesc,
+		list;
 
-	var init = function(){
-
+	var init = function(listIns){
 		el = $('#add-item-modal');
 		inputImg = $('#img-input-item');
 		tagImg = $('#img-tag-item');
 		textDesc = $('#desc-item');
+		list = listIns;
 
-		$('#btn-cancel-modal').click(closeModal())
+
+		/*Events Modal*/
+
+		$('#btn-cancel-modal').click(closeModal)
 		
 		window.onclick = function(event) {
 		    if (event.target == el[0]) {
@@ -20,7 +24,7 @@ var Modal = (function($){
 		    }
 		}.bind(this);
 
-		//$('#btn-submit-modal').click(submit());
+		$('#btn-submit-modal').click(submit);
 
 		$('#img-anchor-item').click(function(){
 			inputImg.click();
@@ -34,17 +38,21 @@ var Modal = (function($){
 	}
 
 	var open = function(isEdit, item){
-
 		if (isEdit) {
 			textDesc.val(item.description);
 			tagImg.attr('src', item.imgSrc);
 		}
-
 		el.show();
 	}
 
 	var submit = function(){
-
+		var itemToAdd = {
+			uid: guidGenerator(),
+			description: textDesc.val(),
+			img: getBase64Image(tagImg[0])
+		};
+		list.addItem(itemToAdd);
+		closeModal();
 	}
 
 	var cleanForm = function(){
@@ -66,6 +74,7 @@ var Modal = (function($){
         	
         if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
     		alert('not an image')
+    		inputImg.val('');
     		return false;
         }
 
@@ -87,15 +96,36 @@ var Modal = (function($){
 			    }
             }else{
             	alert('image with more than 320x320px')
+            	inputImg.val('');
             }
         };
 
 	}
 
-	return {
+	var getBase64Image = function(img) {
+	    var canvas = document.createElement("canvas");
+	    canvas.width = img.width;
+	    canvas.height = img.height;
+
+	    var ctx = canvas.getContext("2d");
+	    ctx.drawImage(img, 0, 0);
+
+	    var dataURL = canvas.toDataURL("image/png");
+
+	    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+	}
+
+	function guidGenerator() {
+	    var S4 = function() {
+	       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+	    };
+	    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+	}
+
+	App.Modal = {
 		init: init,
 		getEl: getEl,
 		open: open
 	}
 
-})(jQuery)
+})(jQuery, App)
