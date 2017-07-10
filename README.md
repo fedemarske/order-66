@@ -10,7 +10,13 @@ Sortable list that help you manages your items.
 
 ## Getting Started
 
-In the root of the folder, execute:
+In the root of the folder, execute for production:
+
+```
+npm install --production
+```
+
+or for development
 
 ```
 npm install
