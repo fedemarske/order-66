@@ -16,10 +16,13 @@ var jsFiles = 'public/src/js/**/*.js',
 gulp.task('scripts', function() {  
     return gulp.src(jsFiles)
         .pipe(concat('scripts.js'))
+        .pipe(uglify())
         .pipe(gulp.dest(jsDest));
 });
 
-gulp.task('default',function() {
+gulp.task('watch',function() {
     gulp.watch('public/src/scss/*.scss',['styles']);
     gulp.watch('public/src/js/**/*.js',['scripts']);
 });
+
+gulp.task('default', ['watch', 'scripts', 'styles']);

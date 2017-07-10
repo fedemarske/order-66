@@ -3,7 +3,6 @@
 	'use strict';
 
 	function Item(options, listIns){
-		console.log(options)
 		this.description = options.description;
 		this.imgSrc = options.img.indexOf('data:image/png;base64,') !== -1 ? options.img : 'data:image/png;base64,' + options.img;
 		this.uid = options.uid || '';
@@ -35,10 +34,7 @@
 	}
 
 	Item.prototype.editHandler = function() {
-		App.Modal.open(true, {
-			description: this.description,
-			imgSrc: this.imgSrc
-		});
+		App.Modal.open(true, this);
 	}
 
 	Item.prototype.deleteHandler = function() {
@@ -46,6 +42,17 @@
 			itemToDelete = items.map(function(e) { return e.uid; }).indexOf(this.uid);
 
 		items.splice(itemToDelete, 1);
+		Lockr.rm('items-list');
+		Lockr.set('items-list', items);
+		this.list.reRender();
+	}
+
+	Item.prototype.editItem = function(img, desc){
+		var items = this.list.items,
+			itemToEdit = items.map(function(e) { return e.uid; }).indexOf(this.uid);
+
+		items[itemToEdit].img = img;
+		items[itemToEdit].description = desc;
 		Lockr.rm('items-list');
 		Lockr.set('items-list', items);
 		this.list.reRender();

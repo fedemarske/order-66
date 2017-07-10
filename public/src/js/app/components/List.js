@@ -43,6 +43,7 @@
 	List.prototype.reRender = function(){
 		this.el.html('');
 		this.create();
+		$('#counter').text(this.getCounter());
 	}
 
 	List.prototype.cleanList = function(){

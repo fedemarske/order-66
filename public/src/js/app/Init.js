@@ -42,10 +42,10 @@ var App = (function($, Lockr){
 		    var items = [];
 
 		    container.el.find('li.item').each(function(){
-		    	console.log(this)
 		    	var item = {
 					description: $(this).data().description,
-					img: $(this).data().imgSrc
+					img: $(this).data().imgSrc,
+					uid: $(this).data().uid
 				}
 		    	items.push(item);
 		    })
@@ -77,9 +77,6 @@ var App = (function($, Lockr){
 		});
 	}
 
-	var getList = function(){
-		return list;
-	}
 
 	return {
 		init: init

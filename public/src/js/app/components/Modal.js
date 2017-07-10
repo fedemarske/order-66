@@ -4,7 +4,10 @@
 		inputImg,
 		tagImg,
 		textDesc,
-		list;
+		list,
+		isFormInvalid,
+		isEdit,
+		item;
 
 	var init = function(listIns){
 		el = $('#add-item-modal');
@@ -12,6 +15,9 @@
 		tagImg = $('#img-tag-item');
 		textDesc = $('#desc-item');
 		list = listIns;
+		isFormInvalid = false;
+		editMode = false;
+		item = {};
 
 
 		/*Events Modal*/
@@ -31,28 +37,50 @@
 		}.bind(this))
 
 		inputImg.on('change', inputImgHandler.bind(this));
+
+		$("textarea[maxlength]").on("propertychange input", function() {
+		    if (this.value.length > this.maxlength) {
+		        this.value = this.value.substring(0, this.maxlength);
+		        alert('300 max characters');
+		        isFormInvalid = true;
+		    }else{
+		    	isFormInvalid = false;
+		    }
+		});
 	}
 
 	var getEl = function(){
 		return el;
 	}
 
-	var open = function(isEdit, item){
+	var open = function(isEdit, itemToEdit){
 		if (isEdit) {
-			textDesc.val(item.description);
-			tagImg.attr('src', item.imgSrc);
+			textDesc.val(itemToEdit.description);
+			tagImg.attr('src', itemToEdit.imgSrc);
+			isFormInvalid = false;
+			editMode = isEdit;
+			item = itemToEdit;
 		}
 		el.show();
 	}
 
 	var submit = function(){
-		var itemToAdd = {
-			uid: guidGenerator(),
-			description: textDesc.val(),
-			img: getBase64Image(tagImg[0])
-		};
-		list.addItem(itemToAdd);
-		closeModal();
+
+		if(isFormInvalid || tagImg.attr('src').length === 0 || textDesc.val().length === 0){
+			alert('Invalid Form');
+		}else{
+			if(editMode){
+				item.editItem(getBase64Image(tagImg[0]), textDesc.val())
+			}else{
+				var itemToAdd = {
+					uid: guidGenerator(),
+					description: textDesc.val(),
+					img: getBase64Image(tagImg[0])
+				};
+				list.addItem(itemToAdd);
+			}
+			closeModal();
+		}
 	}
 
 	var cleanForm = function(){
@@ -102,6 +130,8 @@
 
 	}
 
+	/* HELPERS */
+
 	var getBase64Image = function(img) {
 	    var canvas = document.createElement("canvas");
 	    canvas.width = img.width;
@@ -121,6 +151,9 @@
 	    };
 	    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 	}
+
+
+	/* ADD TO NAMESPACE */
 
 	App.Modal = {
 		init: init,
