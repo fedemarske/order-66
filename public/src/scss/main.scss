@@ -127,6 +127,12 @@ body.dragging, body.dragging * {
 			    cursor: pointer;
 			}
 
+			img#img-tag-item {
+				width: 320px;
+				height: 320px;
+				background: #eee;
+			}
+
 			input#img-input-item {
 				display: none;
 			}

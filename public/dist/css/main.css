@@ -95,6 +95,10 @@ body.dragging, body.dragging * {
         border: 1px solid white;
         color: #FFF;
         cursor: pointer; }
+      .main .modal .input-group img#img-tag-item {
+        width: 320px;
+        height: 320px;
+        background: #eee; }
       .main .modal .input-group input#img-input-item {
         display: none; }
 
