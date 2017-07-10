@@ -6,7 +6,7 @@ Sortable list that help you manages your items.
 
 * [Nodejs](https://nodejs.org/es/)
 * NPM (installed along with nodejs)
-* Gulp (installed globally with npm)
+* Gulp (install globally with npm install -g gulp)
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ Then
 node index.js
 ```
 
-The app should be availble on http:://localhost:3000
+The app should be availble on http://localhost:3000
 
 ## Documentation
 
